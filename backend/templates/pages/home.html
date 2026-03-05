@@ -1,27 +1,63 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{% block title %NMCS{% endblock %}}</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
-    <body>
-        <header>
-            <h1>NMCS Website</h1>
-        </header>
+{% extends 'base.html' %}
 
-        {% {% extends 'base.html' %}%}
-        
-        {% block content %}
-        <h2>Our Leaders</h2>
-        {% for leader in leaders %}
-            <p>{{ leader.full_name }} - {{ leader.position }}</p>
-        {% endfor %}
+{% block content %}
 
-        <h2>Members</h2>
-        {% for member in members %}
-            <p>{{ member.full_name }}</p>
-        {% endfor %}
-        {% endblock %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Welcome to NMCS</h1>
+    <p class="col-md-8 fs-4">
+      Building faith, leadership and community among students.
+    </p>
+  </div>
+</div>
 
-    </body>
-</html>
+<h2 class="mb-4">Our Leadership</h2>
+
+<div class="row">
+
+{% for leader in leaders %}
+
+<div class="col-md-4 mb-4">
+  <div class="card shadow">
+    <img src="{{ leader.profile_picture.url }}" class="card-img-top">
+
+    <div class="card-body">
+      <h5 class="card-title">{{ leader.full_name }}</h5>
+      <p class="text-muted">{{ leader.position }}</p>
+      <p>{{ leader.message|truncatewords:20 }}</p>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+<!---Members-->
+<h2 class="mt-5 mb-4">Our Members</h2>
+
+<div class="row">
+
+{% for member in members %}
+
+<div class="col-md-3 mb-4">
+
+<div class="card text-center shadow">
+
+<img src="{{ member.profile_picture.url }}" class="card-img-top">
+
+<div class="card-body">
+<h6>{{ member.full_name }}</h6>
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}
+
