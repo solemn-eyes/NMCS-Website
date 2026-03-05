@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %NMCS{% endblock %}}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>NMCS Website</h1>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
