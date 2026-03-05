@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %NMCS{% endblock %}}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>NMCS Website</h1>
+        </header>
+
+        {% {% extends 'base.html' %}%}
+        
+        {% block content %}
+        <h2>Our Leaders</h2>
+        {% for leader in leaders %}
+            <p>{{ leader.full_name }} - {{ leader.position }}</p>
+        {% endfor %}
+
+        <h2>Members</h2>
+        {% for member in members %}
+            <p>{{ member.full_name }}</p>
+        {% endfor %}
+        {% endblock %}
+
+    </body>
+</html>
